@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Bisycles.Models.Bicycle>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<div>
+    <div><a href="~/Admin/Create" class="btn btn-primary">New item</a></div>
+</div>
+
+<table class="table">
+    <thread>
+        <tr>
+            <th>Title</th>
+            <th>Frame Size</th>
+            <th>Wheel Diameter</th>
+            <th>Color</th>
+            <th>Number OfSpeeds</th>
+            <th>Manufacture Country</th>
+            <th>Weight</th>
+            <th>Price</th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach (var bicycle in Model)
+        {
+            <tr>
+                <td>@bicycle.BicycleTitle</td>
+                <td>@bicycle.BicycleFrameSize</td>
+                <td>@bicycle.BicycleWheelDiameter</td>
+                <td>@bicycle.BicycleColor</td>
+                <td>@bicycle.BicycleNumberOfSpeeds</td>
+                <td>@bicycle.BicycleManufactureCountry</td>
+                <td>@bicycle.BicucleWeight</td>
+                <td>@bicycle.BicyclePrice</td>
+                <td>
+                    <a href="~/Admin/Create/@bicycle.BicycleId" class="btn btn-warning">Edit</a>
+                </td>
+                <td>
+                    <form action="~/Admin/Delete" method="post">
+                        <input type="hidden" value="@bicycle.BicycleId" name="BicycleId" />
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </form>
+                </td>
+                <td>
+                    @if (bicycle.Avatar != null)
+                    {
+                        <img style='width:80px; height:60px;' src="data:image/jpeg;base64,@bicycle.Avatar" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="d-flex mt-4">
+    @for (int i = 1; i <= @ViewBag.Count; i++)
+    {
+        <form action="~/Admin/NewPage" method="post">
+            <input type="hidden" value="@i" name="pageNumber" />
+            <input type="submit" value="@i" class="btn btn-danger mr-1" />
+        </form>
+    }
+</div>

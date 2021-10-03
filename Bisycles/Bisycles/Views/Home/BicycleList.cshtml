@@ -1,0 +1,228 @@
+﻿@model Bisycles.Models.ViewModels.FilterBicyclesViewModel
+
+<input type="hidden" class="countsOfSpecifications" value="@Model.SelectedSpecifications.CountOfSpecifications" />
+
+
+
+
+
+<div class="d-flex mt-3">
+    <div class="mt-5">
+        @{int i = 0;
+            
+
+            @if (Model.Specifications.ManufacturersAndCount.Count != 0)
+            {
+                <h6 class="font-weight-bold mt-4">Manufacturer:</h6>
+                @foreach (var item in Model.Specifications.Manufacturer)
+                {
+                    <div class="d-flex">
+                        @if (Model.Specifications.ManufacturersAndCount.ContainsKey(item))
+                        {
+                            @if (Model.SelectedSpecifications.AllManufactureCountry.Contains(item))
+                            {
+                                <div><input type="checkbox" class="testData @i" name="AllManufactureCountry" value="@item" checked="checked" /> @item</div>
+                                i++;
+                            }
+                            else
+                            {
+                                <div><input type="checkbox" class="testData @i" name="AllManufactureCountry" value="@item" /> @item</div>
+                                i++;
+                            }
+                            <div class="text-secondary ml-1"> (@Model.Specifications.ManufacturersAndCount[item])</div>
+                        }
+                    </div>
+                }
+            }
+
+
+            @if (Model.Specifications.FrameSizesAndCount.Count != 0)
+            {
+                <h6 class="font-weight-bold mt-4">Frame size:</h6>
+                @foreach (var item in Model.Specifications.FrameSize)
+                {
+                    <div class="d-flex">
+                        @if (Model.Specifications.FrameSizesAndCount.ContainsKey(item))
+                        {
+                            @if (Model.SelectedSpecifications.AllFrameSize.Contains(item))
+                            {
+                                <div><input type="checkbox" class="testData @i" name="AllFrameSize" value="@item" checked="checked" /> @item</div>
+                                i++;
+                            }
+                            else
+                            {
+                                <div><input type="checkbox" class="testData @i" name="AllFrameSize" value="@item" /> @item</div>
+                                i++;
+                            }
+                            <div class="text-secondary ml-1"> (@Model.Specifications.FrameSizesAndCount[item])</div>
+                        }
+                    </div>
+                }
+            }
+
+
+            @if (Model.Specifications.WheelsDiametrAndCount.Count != 0)
+            {
+                <h6 class="font-weight-bold mt-4">Wheel diametr:</h6>
+                @foreach (var item in Model.Specifications.WheelDiametr)
+                {
+                    <div class="d-flex">
+                        @if (Model.Specifications.WheelsDiametrAndCount.ContainsKey(item))
+                        {
+                            @if (Model.SelectedSpecifications.AllWheelDiameter.Contains(item))
+                            {
+                                <div><input type="checkbox" class="testData @i" name="AllWheelDiameter" value="@item" checked="checked" /> @item</div>
+                                i++;
+                            }
+                            else
+                            {
+                                <div><input type="checkbox" class="testData @i" name="AllWheelDiameter" value="@item" /> @item</div>
+                                i++;
+                            }
+                            <div class="text-secondary ml-1"> (@Model.Specifications.WheelsDiametrAndCount[item])</div>
+                        }
+                    </div>
+                }
+            }
+
+
+            @if (Model.Specifications.ColorsAndCount.Count != 0)
+            {
+                <h6 class="font-weight-bold mt-4">Color:</h6>
+                @foreach (var item in Model.Specifications.Color)
+                {
+                    <div class="d-flex">
+                        @if (Model.Specifications.ColorsAndCount.ContainsKey(item))
+                        {
+                            @if (Model.SelectedSpecifications.AllColor.Contains(item))
+                            {
+                                <div><input type="checkbox" class="testData @i" name="AllColor" value="@item" checked="checked" /> @item</div>
+                                i++;
+                            }
+                            else
+                            {
+                                <div><input type="checkbox" class="testData @i" name="AllColor" value="@item" /> @item</div>
+                                i++;
+                            }
+                            <div class="text-secondary ml-1"> (@Model.Specifications.ColorsAndCount[item])</div>
+                        }
+                    </div>
+                }
+            }
+
+
+            @if (Model.Specifications.NumbersOfSpeedsAndCount.Count != 0)
+            {
+                <h6 class="font-weight-bold mt-4">Number of speeds:</h6>
+                @foreach (var item in Model.Specifications.NumberOfSpeeds)
+                {
+                    <div class="d-flex">
+                        @if (Model.Specifications.NumbersOfSpeedsAndCount.ContainsKey(item))
+                        {
+                            @if (Model.SelectedSpecifications.AllNumberOfSpeeds.Contains(item))
+                            {
+                                <div><input type="checkbox" class="testData @i" name="AllNumberOfSpeeds" value="@item" checked="checked" /> @item</div>
+                                i++;
+                            }
+                            else
+                            {
+                                <div><input type="checkbox" class="testData @i" name="AllNumberOfSpeeds" value="@item" /> @item</div>
+                                i++;
+                            }
+                            <div class="text-secondary ml-1"> (@Model.Specifications.NumbersOfSpeedsAndCount[item])</div>
+                        }
+                    </div>
+                }
+            }
+        }
+    </div>
+    <div>
+        @if (Model.Pagination.Bicycles.Count == 0)
+        {
+            <h2>Нет товаров, подходящих под условие</h2>
+        }
+        else
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th class="text-center thBackground1"><a class="thCategory1 sortCategory sort1" name="BicycleTitle">Title</a></th>
+                        <th class="text-center thBackground2"><a class="thCategory2 sortCategory sort1" name="BicycleFrameSize">Frame Size</a></th>
+                        <th class="text-center thBackground3"><a class="thCategory3 sortCategory sort1" name="BicycleWheelDiameter">Wheel Diameter</a></th>
+                        <th class="text-center thBackground4"><a class="thCategory4 sortCategory sort1" name="BicycleColor">Color</a></th>
+                        <th class="text-center thBackground5"><a class="thCategory5 sortCategory sort1" name="BicycleNumberOfSpeeds">Number Of Speeds</a></th>
+                        <th class="text-center thBackground6"><a class="thCategory6 sortCategory sort1" name="BicycleManufactureCountry">Manufacture Country</a></th>
+                        <th class="text-center thBackground7"><a class="thCategory7 sortCategory sort1" name="BicucleWeight">Weight</a></th>
+                        <th class="text-center thBackground8"><a class="thCategory8 sortCategory sort1" name="BicyclePrice">Price</a></th>
+                        @*<th>Foto</th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var bicycle in Model.Pagination.Bicycles)
+                    {
+                    <tr>
+
+                        <td class="text-center">@bicycle.BicycleTitle</td>
+                        <td class="text-center">@bicycle.BicycleFrameSize</td>
+                        <td class="text-center">@bicycle.BicycleWheelDiameter</td>
+                        <td class="text-center">@bicycle.BicycleColor</td>
+                        <td class="text-center">@bicycle.BicycleNumberOfSpeeds</td>
+                        <td class="text-center">@bicycle.BicycleManufactureCountry</td>
+                        <td class="text-center">@bicycle.BicucleWeight</td>
+                        <td class="text-center">@bicycle.BicyclePrice</td>
+                        @*<td>
+                            @if (bicycle.Avatar != null)
+                            {
+                                <img style='width:80px; height:60px;' src="data:image/jpeg;base64,@bicycle.Avatar" />
+                            }
+                        </td>*@
+                        @*<td class="text-center"><a href="~/Home/Buy/@bicycle.BicycleId">Buy</a></td>*@
+                        <td>
+                            @using (Html.BeginForm("AddToCart", "Cart"))
+                            {
+                                <input type="hidden" value="@bicycle.BicycleId" name="BicycleId" />
+                                @Html.Hidden("returnUrl", Context.Request.Path)
+                                <input type="submit" value=" Add to Cart" class="btn btn-secondary" />
+                            }
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+            @if (Model.Pagination.MaxPages != 1)
+            {
+                <input type="hidden" class="currentPaginationPage" value="@Model.Pagination.CurrentPage" />
+                <div class="d-flex mt-4">
+                    @if (Model.Pagination.CurrentPage != 1)
+                    {
+                        <button class="btn btn-primary previousPage mr-2"><h5>&laquo;</h5></button>
+                    }
+                    else
+                    {
+                        <span class="mr-4 ml-4"></span>
+                    }
+
+
+                    @for (int p = 1; p <= Model.Pagination.MaxPages; p++)
+                    {
+                        if (p == Model.Pagination.CurrentPage)
+                        {
+                            <button class="btn btn-success pagins pagins-@p mr-2">@p</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary pagins pagins-@p mr-2">@p</button>
+                        }
+
+                    }
+
+                    @if (Model.Pagination.CurrentPage != Model.Pagination.MaxPages)
+                    {
+                        <button class="btn btn-primary nextPage"><h5>&raquo;</h5></button>
+                    }
+                </div>
+            }
+        }
+    </div>
+</div>

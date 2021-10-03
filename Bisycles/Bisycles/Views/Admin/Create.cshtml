@@ -1,0 +1,90 @@
+﻿@model Bisycles.Models.ViewModels.BicyclesViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post" enctype="multipart/form-data">
+    @Html.HiddenFor(x => x.BicycleId)
+
+    <div class="d-flex mb-4">
+        <div class="mb-2">
+            <div class="col-4">@Html.LabelFor(x => x.BicycleTitle)</div>
+            <div class="col-5">@Html.TextBoxFor(x => x.BicycleTitle)</div>
+            <div class="mt-2 ml-3">
+                @Html.ValidationMessage("BicycleTitle", null, new { @class = (Model != null) && (Model.BicycleTitle == null) ? "alert alert-danger py-1" : "" })
+            </div>
+        </div>
+        <div class="mb-2">
+            <div class="col-4">@Html.LabelFor(x => x.BicycleFrameSize)</div>
+            <div class="col-5">@Html.TextBoxFor(x => x.BicycleFrameSize)</div>
+            <div class="mt-2 ml-3">
+                @Html.ValidationMessage("BicycleFrameSize", null, new { @class = (Model != null) && (Model.BicycleFrameSize == 0) ? "alert alert-danger py-1" : "" })
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex mb-4">
+        <div class="mb-2">
+            <div class="col-4">@Html.LabelFor(x => x.BicycleWheelDiameter)</div>
+            <div class="col-5">@Html.TextBoxFor(x => x.BicycleWheelDiameter)</div>
+            <div class="mt-2 ml-3">
+                @Html.ValidationMessage("BicycleWheelDiameter", null, new { @class = (Model != null) && (Model.BicycleWheelDiameter == 0) ? "alert alert-danger py-1" : "" })
+            </div>
+        </div>
+        <div class="mb-2">
+            <div class="col-4">@Html.LabelFor(x => x.BicycleColor)</div>
+            <div class="col-5">@Html.TextBoxFor(x => x.BicycleColor)</div>
+            <div class="mt-2 ml-3">
+                @Html.ValidationMessage("BicycleColor", null, new { @class = (Model != null) && (Model.BicycleColor == null) ? "alert alert-danger py-1" : "" })
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex mb-4">
+        <div class="mb-2">
+            <div class="col-4">@Html.LabelFor(x => x.BicycleNumberOfSpeeds)</div>
+            <div class="col-5">@Html.TextBoxFor(x => x.BicycleNumberOfSpeeds)</div>
+            <div class="mt-2 ml-3">
+                @Html.ValidationMessage("BicycleNumberOfSpeeds", null, new { @class = (Model != null) && (Model.BicycleNumberOfSpeeds == 0) ? "alert alert-danger py-1" : "" })
+            </div>
+        </div>
+        <div class="mb-2">
+            <div class="col-4">@Html.LabelFor(x => x.BicycleManufactureCountry)</div>
+            <div class="col-5">@Html.TextBoxFor(x => x.BicycleManufactureCountry)</div>
+            <div class="mt-2 ml-3">
+                @Html.ValidationMessage("BicycleManufactureCountry", null, new { @class = (Model != null) && (Model.BicycleManufactureCountry == null) ? "alert alert-danger py-1" : "" })
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex mb-4">
+        <div class="mb-2">
+            <div class="col-4">@Html.LabelFor(x => x.BicucleWeight)</div>
+            <div class="col-5">@Html.TextBoxFor(x => x.BicucleWeight)</div>
+            <div class="mt-2 ml-3">
+                @Html.ValidationMessage("BicucleWeight", null, new { @class = (Model != null) && (Model.BicucleWeight == 0) ? "alert alert-danger py-1" : "" })
+            </div>
+        </div>
+        <div class="mb-4">
+            <div class="col-4">@Html.LabelFor(x => x.BicyclePrice)</div>
+            <div class="col-5">@Html.TextBoxFor(x => x.BicyclePrice)</div>
+            <div class="mt-2 ml-3">
+                @Html.ValidationMessage("BicyclePrice", null, new { @class = (Model != null) && (Model.BicyclePrice == 0) ? "alert alert-danger py-1" : "" })
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="d-flex mb-4">
+        <div class="mb-2">
+            <div><input type="file" name="AvatarAvatar" /></div>
+        </div>
+        
+    </div>
+
+    <input type="submit" value="Save" />
+</form>

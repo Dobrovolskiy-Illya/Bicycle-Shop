@@ -1,0 +1,137 @@
+﻿@model Bisycles.Models.ViewModels.FilterBicyclesViewModel
+@{
+
+}
+
+<h1>@ViewBag.Message</h1>
+
+<div class="d-flex justify-content-between">
+    <div></div>
+    <input type="search" class="search col-md-3 rounded" placeholder="Search..." />
+</div>
+
+@*@await Html.PartialAsync("BicycleList")*@
+
+<div id="bicycle-list"></div>
+
+
+
+
+@*<div class="d-flex justify-content-between">
+        <div class="mt-5">
+            <form asp-action="Index" method="post">
+
+                <h6 class="font-weight-bold mt-4">Frame size:</h6>
+                @foreach (var item in ViewBag.FrameSize)
+                {
+                    <input type="checkbox" name="AllFrameSize" value="@item" /> @item <br />
+                }
+
+                <h6 class="font-weight-bold mt-4">Wheel diametr:</h6>
+                @foreach (var item in ViewBag.WheelDiametr)
+                {
+                    <input type="checkbox" name="AllWheelDiameter" value="@item" /> @item <br />
+                }
+
+                <h6 class="font-weight-bold mt-4">Color:</h6>
+                @foreach (var item in ViewBag.Color)
+                {
+                    <input type="checkbox" name="AllColor" value="@item" /> @item <br />
+                }
+
+                <h6 class="font-weight-bold mt-4">Nomber of speeds:</h6>
+                @foreach (var item in ViewBag.NumberOfSpeeds)
+                {
+                    <input type="checkbox" name="AllNumberOfSpeeds" value="@item" /> @item <br />
+                }
+
+                <h6 class="font-weight-bold mt-4">Manufacturer:</h6>
+                @foreach (var item in ViewBag.Manufacturer)
+                {
+                    <input type="checkbox" name="AllManufactureCountry" value="@item" /> @item <br />
+                }
+
+                <input type="submit" value="Filter" class="btn btn-danger mr-1 mt-4" />
+
+            </form>
+        </div>
+        <div>
+            @if (ViewBag.Count == 0)
+            {
+                <h2>Нет товаров, подходящих под условие</h2>
+            }
+            else
+            {
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="text-center">Title</th>
+                            <th class="text-center">Frame Size</th>
+                            <th class="text-center">Wheel Diameter</th>
+                            <th class="text-center">Color</th>
+                            <th class="text-center">Number Of Speeds</th>
+                            <th class="text-center">Manufacture Country</th>
+                            <th class="text-center">Weight</th>
+                            <th class="text-center">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bicycle in ViewBag.BicycleContext)
+                        {
+                            <tr>
+                                <td class="text-center">@bicycle.BicycleTitle</td>
+                                <td class="text-center">@bicycle.BicycleFrameSize</td>
+                                <td class="text-center">@bicycle.BicycleWheelDiameter</td>
+                                <td class="text-center">@bicycle.BicycleColor</td>
+                                <td class="text-center">@bicycle.BicycleNumberOfSpeeds</td>
+                                <td class="text-center">@bicycle.BicycleManufactureCountry</td>
+                                <td class="text-center">@bicycle.BicucleWeight</td>
+                                <td class="text-center">@bicycle.BicyclePrice</td>
+                                <td class="text-center"><a href="~/Home/Buy/@bicycle.BicycleId">Buy</a></td>
+                                <td>
+                                    @using (Html.BeginForm("AddToCart", "Cart"))
+                                    {
+                                        <input type="hidden" value="@bicycle.BicycleId" name="BicycleId" />
+                                        @Html.Hidden("returnUrl", Context.Request.Path)
+                                        <input type="submit" value=" Add to Cart" class="btn btn-secondary" />
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="d-flex mt-4">
+                    @for (int i = 1; i <= @ViewBag.Count; i++)
+                    {
+                        <form action="~/Home/NewPage" method="post">
+                            <input type="hidden" value="@i" name="pageNumber" />
+                            <input type="submit" value="@i" class="btn btn-danger mr-1" />
+                        </form>
+                    }
+                </div>
+            }
+        </div>
+    </div>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

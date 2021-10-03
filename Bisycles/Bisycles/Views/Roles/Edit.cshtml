@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model Bisycles.Models.ViewModels.ChangeRoleViewModel
+
+<h1>Change roles for @Model.UserEmail</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" value="@Model.UserId" name="userId" />
+    <div class="form-group">
+        @foreach (IdentityRole role in Model.AllRoles)
+        {
+            if (role.Name == "super admin")
+            {
+
+            }
+            else
+            {
+                <input type="checkbox" name="roles" value="@role.Name"
+                       @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />@role.Name <br />
+            }
+
+        }
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

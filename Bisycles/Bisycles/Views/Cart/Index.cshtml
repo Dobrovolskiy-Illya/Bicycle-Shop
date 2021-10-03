@@ -1,0 +1,76 @@
+﻿@model Bisycles.Models.ViewModels.CartIndexViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<h1>Cart</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+        <tr>
+            <td>@line.Quantity</td>
+            <td>@line.Bicycle.BicycleTitle</td>
+            <td>@line.Bicycle.BicyclePrice</td>
+            <td>@(line.Quantity * line.Bicycle.BicyclePrice)</td>
+            <td>
+                @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                {
+                    <input type="hidden" value="@line.Bicycle.BicycleId" name="BicycleId" />
+                    @Html.Hidden("returnUrl", Context.Request.Path)
+                    <input type="submit" value=" Delete from Cart" class="btn btn-secondary" />
+                }
+            </td>
+            <td>
+                @using (Html.BeginForm("RemoveOneFromCart", "Cart"))
+                {
+                    <input type="hidden" value="@line.Bicycle.BicycleId" name="BicycleId" />
+                    @Html.Hidden("returnUrl", Context.Request.Path)
+                    <input type="submit" value=" - " class="btn btn-secondary" />
+                }
+            </td>
+            <td>
+                @using (Html.BeginForm("AddOneItemToCart", "Cart"))
+                {
+                    <input type="hidden" value="@line.Bicycle.BicycleId" name="BicycleId" />
+                    @Html.Hidden("returnUrl", Context.Request.Path)
+                    <input type="submit" value=" + " class="btn btn-secondary" />
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total: </td>
+            <td>@Model.Cart.ComputeTotalValue()</td>
+        </tr>
+    </tfoot>
+</table>
+
+<p>
+    @*<button class="continueShopingFromCart"></button>
+    <a href="Home/index" class="btn btn-primary">Continue shopping</a>*@
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Continue shopping</a>
+</p>
+@*<p>
+    @using (Html.BeginForm("AddOneItemToCart", "Index"))
+    {
+        
+        <input type="submit" value=" Delete Cart " class="btn btn-secondary" />
+    }
+
+
+
+</p>*@

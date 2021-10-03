@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
+<h1>Roles</h1>
+
+<div>
+    <a asp-action="Create" class="btn btn-primary">New role</a>
+</div>
+
+
+<table class="table">
+    @foreach (var role in Model)
+    {
+
+        <tr>
+             <td>@role.Name</td>
+             <td>
+                 @if (role.Name == "super admin")
+                 {
+                     
+                 }
+                 else
+                 {
+                     <form asp-action="Delete" asp-route-id="@role.Id" method="post">
+                         <button type="submit" class="btn btn-outline-danger">Delete</button>
+                     </form>
+                 }
+
+             </td>
+        </tr>
+        
+
+    }
+</table>

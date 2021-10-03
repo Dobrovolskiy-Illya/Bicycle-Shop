@@ -1,0 +1,49 @@
+﻿@model Bisycles.Models.Order
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+
+
+<form method="post">
+    <input type="hidden" value="@ViewBag.BicycleId" name="BicycleId" />
+    <div class="d-flex mb-2">
+        <div>
+            @*<label>Name: </label>
+            <input type="text" name="Name" />*@
+            <div class="col-2">@Html.LabelFor(x => x.Name)</div>
+            <div class="col-3">@Html.TextBoxFor(x => x.Name)</div>
+            @Html.ValidationMessage("Name", null, new { @class = (Model != null) && (Model.Name == null) ? "alert alert-danger py-1" : "" })
+        </div>
+        <div>
+            @*<label>Lastname: </label>
+        <input type="text" name="Lastname" />*@
+            <div class="col-2">@Html.LabelFor(x => x.LastName)</div>
+            <div class="col-3">@Html.TextBoxFor(x => x.LastName)</div>
+            @Html.ValidationMessage("LastName", null, new { @class = (Model != null) && (Model.LastName == null) ? "alert alert-danger py-1" : "" })
+        </div>
+    </div>
+    
+    <div class="d-flex">
+        <div>
+            @*<label>Phone: </label>
+        <input type="text" name="ContactPhone" />*@
+            <div class="col-2">@Html.LabelFor(x => x.ContactPhone)</div>
+            <div class="col-3">@Html.TextBoxFor(x => x.ContactPhone)</div>
+            @Html.ValidationMessage("ContactPhone", null, new { @class = (Model != null) && (Model.ContactPhone == null) ? "alert alert-danger py-1" : "" })
+        </div>
+        <div>
+            @*<label>Email: </label>
+        <input type="text" name="Email" />*@
+            <div class="col-2">@Html.LabelFor(x => x.Email)</div>
+            <div class="col-3">@Html.TextBoxFor(x => x.Email)</div>
+            @Html.ValidationMessage("Email", null, new { @class = (Model != null) && (Model.Email == null) ? "alert alert-danger py-1" : "" })
+        </div>
+    </div>
+   
+    <input type="submit" class="m-sm-5 " />
+</form>
+
